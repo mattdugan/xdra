@@ -1,0 +1,38 @@
+<xdra:model xmlns:xdra="xdra">
+  <xdra:source type="files" path="samples/data" name="blog" recursive="0" />
+  <blog>
+  <xdra:query type="fetch" path=".//blog">
+    <xdra:action type="custom" name="Test">
+##############################################
+
+#use some libraries
+import time
+print "Results from query:"
+#Send some stuff to console
+print ElementTree.tostring(xdra_tree)
+#modify the tree in some way
+post=ElementTree.Element("post")
+title=ElementTree.SubElement(post,"title")
+title.text="This is a brand new node"
+date=ElementTree.SubElement(post,"date")
+date.text="%d"%time.localtime()[3]
+xdra_tree.append(post)
+#adjust the output
+xdra_outtext="This is Text I want to see in the preview"
+print ElementTree.tostring(xdra_tree)
+
+##############################################
+<xdra:getnode path="./post">
+        <post>
+          <para><br />
+            <xdra:getcontent path="./title" />
+          </para>
+          <para>
+            <xdra:getcontent path="./date" />
+          </para>
+        </post>
+      </xdra:getnode>
+    </xdra:action>
+  </xdra:query>
+  </blog>
+</xdra:model>

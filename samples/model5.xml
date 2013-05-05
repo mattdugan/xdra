@@ -1,0 +1,26 @@
+<xdra:model xmlns:xdra="xdra">
+  <xdra:source type="custom" name="contacts">
+#############################################
+
+fp=open('samples/data/test.txt','r')
+data=fp.readlines()
+for line in data:
+    info=line[:-1].split(',')
+    person=ElementTree.Element("person")
+    n=ElementTree.SubElement(person,"name");n.text=info[0]
+    e=ElementTree.SubElement(person,"email");e.text=info[1]
+    p=ElementTree.SubElement(person,"phone");p.text=info[2]
+    a=ElementTree.SubElement(person,"address");a.text=info[3]
+    xdra_tree.append(person)
+
+#############################################
+</xdra:source>
+  <contacts>
+  <xdra:query type="fetch" path=".//contacts">
+    <xdra:action type="reversesort" key="name">
+      <xdra:getnode path="./person" />
+    </xdra:action>
+  </xdra:query>
+  </contacts>
+</xdra:model>
+

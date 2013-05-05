@@ -1,0 +1,18 @@
+<xdra:model output="samples/output/slashdot.html" xmlns:xdra="xdra">
+  <xdra:source name="slashdot" path="http://slashdot.org/index.rss" type="url" />
+  <xdra:literal>&lt;html&gt;&lt;body&gt;&lt;table&gt;
+  </xdra:literal>
+  <xdra:query path=".//slashdot" type="fetch">
+    <xdra:action>
+      <xdra:getnode path=".//{http://purl.org/rss/1.0/}item">
+      <xdra:literal>&lt;tr&gt;&lt;td&gt;&lt;a href="</xdra:literal>
+      <xdra:getcontent path="./{http://purl.org/rss/1.0/}link" />
+      <xdra:literal>"&gt;</xdra:literal>
+      <xdra:getcontent path="./{http://purl.org/rss/1.0/}title" />
+      <xdra:literal>&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+      </xdra:literal>
+      </xdra:getnode>
+    </xdra:action>
+  </xdra:query>
+  <xdra:literal>&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</xdra:literal>
+</xdra:model>

@@ -1,0 +1,18 @@
+<xdra:model xmlns:xdra="xdra">
+  <xdra:source type="files" path="samples/data" name="blog" recursive="0" />
+  <html><body><h1><xdra:literal>Blog</xdra:literal></h1>
+  <xdra:query type="fetch" path=".//blog">
+    <xdra:action type="sort" key="date">
+      <xdra:getnode path="./post">
+        <center><p>
+            <h3><xdra:getcontent path="./title" /></h3>
+          </p>
+          <p>
+            <h4><xdra:getcontent path="./date" /></h4>
+          </p>
+        </center>
+      </xdra:getnode>
+    </xdra:action>
+  </xdra:query>
+  </body></html>
+</xdra:model>

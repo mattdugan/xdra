@@ -1,0 +1,21 @@
+<xdra:model output="samples/output/pythonurl.html" xmlns:xdra="xdra">
+  <xdra:source name="pyurl" path="http://www.pythonware.com/daily/rss.xml" type="url" />
+  <html><body><ol>
+    <xdra:query path=".//pyurl" type="fetch">
+      <xdra:action>
+        <xdra:getnode path=".//rss/channel/item">
+        <li><ul>
+          <li><b><xdra:literal>Link: </xdra:literal></b>
+            <xdra:literal>&lt;a href="</xdra:literal>
+            <xdra:getcontent path="./link" />
+            <xdra:literal>"&gt;</xdra:literal>
+            <xdra:getcontent path="./title" />
+            <xdra:literal>&lt;/a&gt;</xdra:literal></li>
+          <li><b><xdra:literal>Abstract: </xdra:literal></b><br />
+            <xdra:getcontent path="./description" /></li>
+        </ul></li>
+        </xdra:getnode>
+      </xdra:action>
+    </xdra:query>
+  </ol></body></html>
+</xdra:model>

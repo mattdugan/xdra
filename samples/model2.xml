@@ -1,0 +1,11 @@
+<xdra:model xmlns:xdra="xdra">
+  <xdra:source name="documents" path="samples/data" recursive="0" type="files" />
+  <document>
+  <xdra:query path="//book" type="fetch">
+    <xdra:action>
+      <xdra:getnode path=".//bookinfo">
+      </xdra:getnode>
+    </xdra:action>
+  </xdra:query>
+  </document>
+</xdra:model>
